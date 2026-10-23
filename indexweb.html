@@ -1,0 +1,1449 @@
+html_content = """
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanggar Tari Bening Irsani Gresik - Menabur proses, Menuai prestasi</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ==========================================
+           1. RESET & VARIABLES
+           ========================================== */
+        :root {
+            --bg-main: #FAF8F5;
+            --bg-card: #FFFFFF;
+            --bg-accent: #F2ECE1;
+            --text-main: #2C2523;
+            --text-muted: #665E5A;
+            --gold-primary: #C5A059;
+            --gold-hover: #A3803C;
+            --terracotta: #8B3A2B;
+            --border-color: #E8E2D8;
+            --font-heading: 'Cinzel', serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+            --shadow-subtle: 0 10px 30px rgba(44, 37, 35, 0.05);
+            --shadow-hover: 0 15px 35px rgba(44, 37, 35, 0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ==========================================
+           2. TYPOGRAPHY & BUTTONS
+           ========================================== */
+        h1,
+        h2,
+        h3,
+        h4,
+        .brand-logo {
+            font-family: var(--font-heading);
+            letter-spacing: 0.03em;
+            color: var(--text-main);
+        }
+
+        .section-tag {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gold-primary);
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            max-width: 600px;
+            font-size: 1.05rem;
+            margin-bottom: 48px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-center .section-subtitle {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            border-radius: 2px;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--gold-primary);
+            color: #FFFFFF;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--gold-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(197, 160, 89, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--text-main);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--text-main);
+            color: var(--bg-main);
+            transform: translateY(-2px);
+        }
+
+        /* ==========================================
+           3. NAVBAR
+           ========================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(250, 248, 245, 0.92);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(232, 226, 216, 0.5);
+            transition: var(--transition);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .brand-logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-logo span {
+            color: var(--gold-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--text-main);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--gold-primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-main);
+        }
+
+        /* ==========================================
+           4. HERO SECTION
+           ========================================== */
+        .hero {
+            padding-top: 140px;
+            padding-bottom: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            line-height: 1.15;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        .hero-content h1 span {
+            color: var(--gold-primary);
+            font-style: italic;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 36px;
+            max-width: 480px;
+        }
+
+        .hero-btn-group {
+            display: flex;
+            gap: 16px;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+        }
+
+        .hero-image-frame {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .hero-image-frame img {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+            filter: brightness(0.95) contrast(1.02);
+            transition: transform 0.8s ease;
+        }
+
+        .hero-image-frame:hover img {
+            transform: scale(1.03);
+        }
+
+        .hero-accent-box {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            background-color: var(--bg-accent);
+            padding: 24px 32px;
+            border: 1px solid var(--border-color);
+            z-index: 2;
+            border-radius: 2px;
+        }
+
+        .hero-accent-box .number {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--gold-primary);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .hero-accent-box .label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+        }
+
+        /* ==========================================
+           5. ABOUT / STORY SECTION
+           ========================================== */
+        .story {
+            padding: 100px 0;
+            background-color: #FFFFFF;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .story-image {
+            position: relative;
+        }
+
+        .story-image img {
+            border-radius: 2px;
+            box-shadow: var(--shadow-subtle);
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+        }
+
+        .story-image::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: 15px;
+            bottom: 15px;
+            border: 1px solid var(--gold-primary);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .story-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .story-content p {
+            margin-bottom: 20px;
+            color: var(--text-muted);
+            font-size: 1.02rem;
+            text-align: justify;
+        }
+
+        .quote-box {
+            margin-top: 30px;
+            padding-left: 20px;
+            border-left: 3px solid var(--gold-primary);
+            font-style: italic;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        /* ==========================================
+           6. TEAM & INSTRUCTORS SECTION
+           ========================================== */
+        .team {
+            padding: 100px 0;
+            background-color: var(--bg-main);
+        }
+
+        .owner-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--gold-primary);
+            border-radius: 4px;
+            padding: 32px;
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            margin-bottom: 50px;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .owner-info h3 {
+            font-size: 1.5rem;
+            color: var(--gold-primary);
+            margin-bottom: 4px;
+        }
+
+        .owner-role {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--terracotta);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .trainers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .trainer-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 24px;
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .trainer-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--gold-primary);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .trainer-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .trainer-spec {
+            font-size: 0.85rem;
+            color: var(--gold-primary);
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .trainer-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        /* ==========================================
+           7. WORKS / PORTFOLIO SECTION
+           ========================================== */
+        .works {
+            padding: 120px 0;
+            background-color: #FFFFFF;
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .work-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 2px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .work-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .work-img-wrapper {
+            position: relative;
+            height: 260px;
+            overflow: hidden;
+        }
+
+        .work-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .work-card:hover .work-img-wrapper img {
+            transform: scale(1.08);
+        }
+
+        .work-year {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background-color: rgba(44, 37, 35, 0.85);
+            color: var(--gold-primary);
+            padding: 4px 12px;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            font-family: var(--font-heading);
+            border-radius: 2px;
+        }
+
+        .work-info {
+            padding: 28px;
+        }
+
+        .work-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .work-info p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        /* ==========================================
+           8. BRANCHES SECTION (CABANG)
+           ========================================== */
+        .branches {
+            padding: 100px 0;
+            background-color: var(--bg-accent);
+        }
+
+        .branches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .branch-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 32px;
+            transition: var(--transition);
+        }
+
+        .branch-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .branch-card h3 {
+            font-size: 1.3rem;
+            color: var(--gold-primary);
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .branch-card p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .branch-schedule {
+            background-color: var(--bg-main);
+            padding: 16px;
+            border-radius: 2px;
+            border-left: 3px solid var(--gold-primary);
+        }
+
+        .branch-schedule h4 {
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .branch-schedule ul {
+            list-style: none;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .branch-schedule li {
+            margin-bottom: 4px;
+        }
+
+        /* ==========================================
+           9. GALLERY / UJI KOMPETENSI SECTION
+           ========================================== */
+        .gallery-section {
+            padding: 120px 0;
+        }
+
+        .gallery-filter {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            padding: 8px 20px;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background-color: var(--gold-primary);
+            color: #FFFFFF;
+            border-color: var(--gold-primary);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 2px;
+            overflow: hidden;
+            height: 280px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(44, 37, 35, 0.85), transparent);
+            opacity: 0;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 24px;
+            color: #FFFFFF;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h4 {
+            color: #FFFFFF;
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .gallery-overlay p {
+            font-size: 0.82rem;
+            color: var(--border-color);
+        }
+
+        /* ==========================================
+           10. ADMISSION / REGISTRATION SECTION
+           ========================================== */
+        .admission {
+            padding: 120px 0;
+            background-color: #FFFFFF;
+        }
+
+        .admission-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .class-table-wrapper {
+            background-color: var(--bg-main);
+            padding: 32px;
+            border: 1px solid var(--border-color);
+            border-radius: 2px;
+        }
+
+        .class-table-wrapper h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .class-card {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .class-card:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .class-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .class-title {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--text-main);
+        }
+
+        .class-badge {
+            font-size: 0.75rem;
+            padding: 3px 10px;
+            background-color: rgba(197, 160, 89, 0.15);
+            color: var(--gold-hover);
+            border-radius: 2px;
+            font-weight: 600;
+        }
+
+        .class-details {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            display: flex;
+            gap: 20px;
+        }
+
+        .registration-form {
+            background-color: var(--bg-card);
+            padding: 40px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-subtle);
+            border-radius: 2px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+            background-color: #FFFFFF;
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%20C5A059' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+
+        /* ==========================================
+           11. FOOTER
+           ========================================== */
+        footer {
+            background-color: var(--text-main);
+            color: #E8E2D8;
+            padding: 80px 0 30px 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand .brand-logo {
+            color: #FFFFFF;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            color: #A39B96;
+            font-size: 0.9rem;
+            max-width: 320px;
+        }
+
+        .footer-col h4 {
+            color: #FFFFFF;
+            font-size: 1.05rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #A39B96;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-primary);
+        }
+
+        .footer-contact p {
+            color: #A39B96;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.82rem;
+            color: #88807B;
+        }
+
+        /* ==========================================
+           12. RESPONSIVE DESIGN
+           ========================================== */
+        @media (max-width: 992px) {
+
+            .hero-grid,
+            .story-grid,
+            .admission-grid,
+            .owner-card {
+                grid-template-columns: 1fr;
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2.6rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--bg-main);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 32px;
+                transition: var(--transition);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="brand-logo">
+                <span>BENING</span> IRSANI
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle Navigation">☰</button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="#pengajar">Tim Pelatih</a></li>
+                <li><a href="#cabang">Cabang</a></li>
+                <li><a href="#karya">Karya Tari</a></li>
+                <li><a href="#pendaftaran">Info Pendaftaran</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <span class="section-tag">Sanggar Tari Tradisional & Kreasi</span>
+                    <h1>Menabur proses, <span>Menuai prestasi</span></h1>
+                    <p>Wadah olah rasa dan keindahan gerak seni tari. Kami membimbing setiap langkah penari untuk
+                        menemukan karakter dan keanggunan budaya bangsa.</p>
+                    <div class="hero-btn-group">
+                        <a href="#pendaftaran" class="btn btn-primary">Daftar Sekarang</a>
+                        <a href="#karya" class="btn btn-outline">Lihat Karya</a>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper">
+                    <div class="hero-image-frame">
+                        <img src="ujikom14.jpeg" alt="Penari Tradisional Indonesia">
+                    </div>
+                    <div class="hero-accent-box">
+                        <div class="number">2019</div>
+                        <div class="label">Tahun Dedikasi Seni</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT / STORY SECTION -->
+    <section class="story" id="tentang">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-image">
+                    <img src="ujikom14.jpeg" alt="Latihan Tari Sanggar">
+                </div>
+                <div class="story-content">
+                    <span class="section-tag">Cerita Sanggar</span>
+                    <h2 class="section-title">Awal Mula Menerka Langkah</h2>
+                    <p>Berdiri sejak tahun 2019, Sanggar Tari Bening Irsani Gresik diawali dari sebuah niat sederhana:
+                        menyediakan ruang yang hangat bagi generasi muda untuk mengenal jati diri budayanya. Dari
+                        Pendopo kecil bermodalkan semangat kelestarian, kini telah berkembang menjadi rumah bagi ratusan
+                        penari muda.</p>
+                    <p>Kami percaya bahwa tari bukan sekadar olah fisik dan ketepatan tempo, melainkan media ekspresi
+                        jiwa dan pembentukan karakter yang beradab dan berestetika tinggi.</p>
+                    <div class="quote-box">
+                        "Tarian adalah bahasa tersembunyi dari jiwa. Di setiap jentikan jari dan gerak langkah, ada
+                        warisan luhur yang terus bernapas."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM & INSTRUCTORS SECTION -->
+    <section class="team" id="pengajar">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-tag">Pengasuh & Pengajar</span>
+                <h2 class="section-title">Struktur & Pelatih Sanggar</h2>
+                <p class="section-subtitle">Didukung oleh para praktisi dan maestro tari profesional yang berdedikasi
+                    tinggi membimbing generasi baru.</p>
+            </div>
+
+            <!-- Pemilik Sanggar -->
+            <div class="owner-card">
+                <div class="owner-info">
+                    <span class="owner-role">Pendiri & Pemilik Sanggar</span>
+                    <h3>Restuti Rahma Irsani, S.Pd., S.Sn.</h3>
+                    <p>Praktisi seni tari lulusan STKW dengan pengalaman lebih dari 17 tahun dalam melestarikan tarian
+                        klasik dan kreasi nusantara. Aktif sebagai penata tari nasional.</p>
+                </div>
+            </div>
+
+            <h3 style="margin-bottom: 24px; font-size: 1.4rem;">Daftar Pelatih Sanggar (9 Pelatih Utama)</h3>
+
+            <!-- Grid 9 Pelatih -->
+            <div class="trainers-grid">
+                <div class="trainer-card">
+                    <div class="trainer-name">Natasya Azahra</div>
+                    <span class="trainer-spec">Pelatih Tari Tradisional Dasar</span>
+                </div>
+                <div class="trainer-card">
+                    <div class="trainer-name">Fitri Aura Hastara</div>
+                    <span class="trainer-spec">Pelatih Tari Tradisional Dasar</span>
+                </div>
+                <div class="trainer-card">
+                    <div class="trainer-name">Az Zahra Sukma Ayu</div>
+                    <span class="trainer-spec">Pelatih Tari Tradisional Dasar</span>
+                </div>
+                <div class="trainer-card">
+                    <div class="trainer-name">Nur Laili Rahayuningtyas, S.Pd</div>
+                    <span class="trainer-spec">Pelatih Tari Tradisional Dasar</span>
+                </div>
+                <div class="trainer-card">
+                    <div class="trainer-name">Imey Friscania Dinda</div>
+                    <span class="trainer-spec">Pelatih Tari Tradisional Dasar</span>
+                </div>
+                <div class="trainer-card">
+                    <div class="trainer-name">Dzakira Talita Sa'ada</div>
+                    <span class="trainer-spec">Pelatih Tari Tradisional Dasar</span>
+                </div>
+                <div class="trainer-card">
+                    <div class="trainer-name">Almahyra Putri Azkhadina</div>
+                    <span class="trainer-spec">Pelatih Tari Tradisional Dasar</span>
+                </div>
+                <div class="trainer-card">
+                    <div class="trainer-name">Della Putri</div>
+                    <span class="trainer-spec">Pelatih Tari Tradisional Dasar</span>
+                </div>
+                <div class="trainer-card">
+                    <div class="trainer-name">Eka Candra Wati, S.Keb.</div>
+                    <span class="trainer-spec">Pelatih Tari Tradisional Dasar</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- WORKS / PORTFOLIO SECTION -->
+    <section class="works" id="karya">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-tag">Karya & Pementasan</span>
+                <h2 class="section-title">Mahakarya Yang Dilahirkan</h2>
+                <p class="section-subtitle">Beberapa hasil olah koreografi original yang telah dipentaskan dalam
+                    panggung uji kompetensi maupun acara budaya lainnya.</p>
+            </div>
+            <div class="works-grid">
+                <div class="work-card">
+                    <div class="work-img-wrapper">
+                        <img src="tari lila ing batos.jpeg" alt="Tari lila ing batos">
+                    </div>
+                    <div class="work-info">
+                        <h3>Tari lila ing batos</h3>
+                        <p>Penata tari: Restuti Rahma Irsani, S.Pd., S.Sn.
+                            penata musik:Suparman, S.Sn.
+                        </p>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-img-wrapper">
+                        <img src="tari lila.jpeg" alt="Tari lila">
+                    </div>
+                    <div class="work-info">
+                        <h3>Tari lila</h3>
+                        <p>Penata tari: Restuti Rahma Irsani, S.Pd., S.Sn.
+                            penata musik: Hendro Sabrang (Almarhum)
+                        </p>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-img-wrapper">
+                        <img src="tari seru nang gresik.jpeg" alt="Tari seru nang gresik">
+                    </div>
+                    <div class="work-info">
+                        <h3>Tari seru nang Gresik</h3>
+                        <p>Penata tari: Restuti Rahma Irsani, S.Pd., S.Sn.
+                            penata musik:M. Ari Septiana, S.Pd.</p>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-img-wrapper">
+                        <img src="tari lare alit.jpeg" alt="Tari lare alit">
+                    </div>
+                    <div class="work-info">
+                        <h3>Tari lare alit</h3>
+                        <p>Penata tari: Restuti Rahma Irsani, S.Pd., S.Sn.
+                            penata musik:M. Ari Septiana, S.Pd.</p>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-img-wrapper">
+                        <img src="tari ayo dolen.jpeg" alt="Tari ayo dolen">
+                    </div>
+                    <div class="work-info">
+                        <h3>Tari ayo dolen</h3>
+                        <p>Penata tari: Restuti Rahma Irsani, S.Pd., S.Sn.
+                            penata musik:M. Ari Septiana, S.Pd.</p>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-img-wrapper">
+                        <img src="tari can macanan.jpeg" alt="Tari Tirta can macanan">
+                    </div>
+                    <div class="work-info">
+                        <h3>Tari can macanan</h3>
+                        <p>Penata tari: Restuti Rahma Irsani, S.Pd., S.Sn.
+                            penata musik:Hendro Sabrang (Almarhum)</p>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-img-wrapper">
+                        <img src="tari padange damar.jpeg" alt="Tari padange damar">
+                    </div>
+                    <div class="work-info">
+                        <h3>Tari padange damar</h3>
+                        <p>Penata tari: Restuti Rahma Irsani, S.Pd., S.Sn.
+                            penata musik:M. Ari Septiana, S.Pd.
+                        </p>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-img-wrapper">
+                        <img src="tari sumonaring agung.jpeg" alt="Tari sumonaring agung">
+                    </div>
+                    <div class="work-info">
+                        <h3>Tari sumonaring agung</h3>
+                        <p>Penata tari: Restuti Rahma Irsani, S.Pd., S.Sn.
+                            penata musik:Damar <br>
+                            produksi: MATRA(Masyarakat adat nusantara)<br>
+                        </p>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-img-wrapper">
+                        <img src="tari slulup.jpeg" alt="Tari slulup">
+                    </div>
+                    <div class="work-info">
+                        <h3>Tari slulup</h3>
+                        <p>Penata tari: Imey Friscania Dinda,DKK.
+                            penata musik:Kisworo Raul Diaz</p>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-img-wrapper">
+                        <img src="tari ngrawung.jpeg" alt="Tari ngrawung">
+                    </div>
+                    <div class="work-info">
+                        <h3>Tari ngrawung</h3>
+                        <p>Penata tari: Imey Friscania Dinda, Angel(sendratasik UNESA)
+                            penata musik: - </p>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-img-wrapper">
+                        <img src="tari bendrong.jpeg" alt="Tari bendrong">
+                    </div>
+                    <div class="work-info">
+                        <h3>Tari bendrong</h3>
+                        <p>Penata tari: Restuti Rahma Irsani, S.Pd., S.Sn.
+                            penata musik:Eko Septiawan, S.Sn.</p>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-img-wrapper">
+                        <img src="tari arek nom-noman.jpeg" alt="Tari arek nom-noman">
+                    </div>
+                    <div class="work-info">
+                        <h3>Tari arek nom-noman</h3>
+                        <p>Penata tari: Restuti Rahma Irsani, S.Pd., S.Sn.
+                            penata musik:M. Ari Septiana, S.Pd.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- BRANCHES SECTION -->
+    <section class="branches" id="cabang">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-tag">Jaringan Sanggar</span>
+                <h2 class="section-title">Lokasi Cabang & Jadwal Latihan</h2>
+                <p class="section-subtitle">Temukan lokasi cabang Sanggar Tari Bening Irsani Gresik terdekat dari
+                    domisili Anda.</p>
+            </div>
+            <div class="branches-grid">
+                <!-- Cabang Pusat -->
+                <div class="branch-card">
+                    <h3>Cabang Utama (Pusat Icon Mall)</h3>
+                    <p>📍 Jl. Dr. Wahidin sudirohusodo No. 788, Kembangan, Dahanrejo, Kec. Kebomas, Kab. Gresik</p>
+                    <div class="branch-schedule">
+                        <h4>Jadwal Latihan:</h4>
+                        <ul>
+                            <li>• Rabu & Jumat: kat A: 17.00 WIB, Kat B: 18.30 WIB, Kat C: 19.00 WIB</li>
+                            <li>• Minggu: kat A: 16.30 WIB, Kat B: 15.30 WIB, Kat C: 16.00 WIB</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Cabang 1 -->
+                <div class="branch-card">
+                    <h3>Cabang Studio 2</h3>
+                    <p>📍 Balai Desa metatu, Kecamatan Benjeng</p>
+                    <div class="branch-schedule">
+                        <h4>Jadwal Latihan:</h4>
+                        <ul>
+                            <li>• Jumat: 15.30 - 18.00 WIB (Anak-anak)</li>
+                            <li>• Sabtu: 13.00 - 17.00 WIB (Remaja & Dewasa)</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Cabang 2 -->
+                <div class="branch-card">
+                    <h3>Cabang Studio 3</h3>
+                    <p>📍 PPS, Jl. Berlian III N.o 14</p>
+                    <div class="branch-schedule">
+                        <h4>Jadwal Latihan:</h4>
+                        <ul>
+                            <li>• Selasa & Kamis: 15.00 - 17.30 WIB (Kelas Reguler)</li>
+                            <li>• Minggu: 08.00 - 11.00 WIB (Kelas Intensif)</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Cabang 3 -->
+                <div class="branch-card">
+                    <h3>Cabang Studio 4</h3>
+                    <p>📍 Balai desa Boteng, Kec. Menganti</p>
+                    <div class="branch-schedule">
+                        <h4>Jadwal Latihan:</h4>
+                        <ul>
+                            <li>• Selasa & Kamis: 15.00 - 17.30 WIB (Kelas Reguler)</li>
+                            <li>• Minggu: 08.00 - 11.00 WIB (Kelas Intensif)</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Cabang 4 -->
+                <div class="branch-card">
+                    <h3>Cabang Studio 5</h3>
+                    <p>📍 Balai Desa Sembayat, Kec. Manyar</p>
+                    <div class="branch-schedule">
+                        <h4>Jadwal Latihan:</h4>
+                        <ul>
+                            <li>• Selasa & Kamis: 15.00 - 17.30 WIB (Kelas Reguler)</li>
+                            <li>• Minggu: 08.00 - 11.00 WIB (Kelas Intensif)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADMISSION / REGISTRATION SECTION -->
+    <section class="admission" id="pendaftaran">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-tag">Bergabung Bersama Kami</span>
+                <h2 class="section-title">Informasi Pendaftaran Murid Baru</h2>
+                <p class="section-subtitle">Pendaftaran dibuka untuk kelas reguler dan privat. Pilih kelas yang sesuai
+                    dengan kelompok usia dan tingkat pengalaman Anda.</p>
+            </div>
+
+            <div class="admission-grid">
+                <!-- Class Info -->
+                <div class="class-table-wrapper">
+                    <h3>Jadwal & Program Kelas</h3>
+
+                    <div class="class-card">
+                        <div class="class-header">
+                            <span class="class-title">Kelas Dasar Anak, Kategori A (Usia 2-7 Thn)</span>
+                            <span class="class-badge">Pendaftaran Dibuka</span>
+                        </div>
+                        <div class="class-details">
+                            <span>🗓️ Sabtu, 08.00 - 10.00 WIB</span>
+                            <span>📍 Pendopo Utama</span>
+                        </div>
+                    </div>
+
+                    <div class="class-card">
+                        <div class="class-header">
+                            <span class="class-title">Kelas Dasar Anak, Kategori B (Usia 8-12 Thn)</span>
+                            <span class="class-badge">Pendaftaran Dibuka</span>
+                        </div>
+                        <div class="class-details">
+                            <span>🗓️ Sabtu, 10.30 - 12.30 WIB</span>
+                            <span>📍 Pendopo Utama</span>
+                        </div>
+                    </div>
+
+                    <div class="class-card">
+                        <div class="class-header">
+                            <span class="class-title">Kelas Dewasa & Umum, Kategori C (>13 Thn)</span>
+                            <span class="class-badge">Pendaftaran Dibuka</span>
+                        </div>
+                        <div class="class-details">
+                            <span>🗓️ Minggu, 09.00 - 11.00 WIB</span>
+                            <span>📍 Studio B</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Registration Form -->
+                <div class="registration-form">
+                    <h3 style="font-size: 1.3rem; margin-bottom: 20px;">Formulir Pendaftaran</h3>
+                    <form id="signupForm" onsubmit="handleFormSubmit(event)">
+                        <div class="form-group">
+                            <label for="fullName">Nama Lengkap Calon Murid</label>
+                            <input type="text" id="fullName" class="form-control" placeholder="Masukkan nama lengkap"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Usia / Tanggal Lahir</label>
+                            <input type="text" id="age" class="form-control" placeholder="Contoh: 12 Tahun" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="branchSelect">Pilihan Cabang Sanggar</label>
+                            <select id="branchSelect" class="form-control" required>
+                                <option value="" disabled selected>Pilih Lokasi Cabang...</option>
+                                <option value="Cabang Pusat Kebomas">Cabang Studio 1, IconMall</option>
+                                <option value="Cabang Surabaya Barat">Cabang Studio 2, Balai Desa Metatu</option>
+                                <option value="Cabang Sidoarjo Kota">Cabang Studio 3, PPS</option>
+                                <option value="Cabang Sidoarjo Kota">Cabang Studio 4, Balai Desa Boteng </option>
+                                <option value="Cabang Sidoarjo Kota">Cabang Studio 5, Balai Desa Sembayat</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="classSelect">Pilihan Program Kelas</label>
+                            <select id="classSelect" class="form-control" required>
+                                <option value="" disabled selected>Pilih Program Kelas...</option>
+                                <option value="Kelas Dasar Anak">Kelas Dasar Anak, Kat A(2-7 Tahun)</option>
+                                <option value="Kelas Remaja">Kelas Dasar Anak, Kat B (8-12 Tahun)</option>
+                                <option value="Kelas Dewasa">Kelas Dewasa & Umum (>13 Tahun)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Nomor WhatsApp (Aktif)</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="08xxxxxxxxxx" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Kirim
+                            Pendaftaran via WhatsApp</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="kontak">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="brand-logo">
+                        <span>BENING</span> IRSANI
+                    </div>
+                    <p>Wadah edukasi dan pelestarian seni tari tradisional yang berfokus pada pembentukan karakter,
+                        nilai estetika, dan keanggunan budaya.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigasi</h4>
+                    <ul class="footer-links">
+                        <li><a href="#tentang">Cerita Sanggar</a></li>
+                        <li><a href="#pengajar">Tim Pelatih</a></li>
+                        <li><a href="#cabang">Lokasi Cabang</a></li>
+                        <li><a href="#karya">Karya Tari</a></li>
+                        <li><a href="#pendaftaran">Info Pendaftaran</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Sosial Media</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Instagram @gallery_irsani</a></li>
+                        <li><a href="#">YouTube Sanggar Tari Bening Irsani Gresik</a></li>
+                        <li><a href="#">TikTok @Gallery_Irsani</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Alamat & Kontak</h4>
+                    <p>📍 Perum Griya Suci Permai Blok A6 NO. 4, Kec. Manyar</p>
+                    <p>📞 089679761774/081335000602</p>
+                    <p>✉️ info@gallery_irsani</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Sanggar Tari Bening Irsani Gresik. Seluruh Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile nav on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Gallery Filter Functionality
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // WhatsApp Form Redirection
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('fullName').value;
+            const age = document.getElementById('age').value;
+            const branch = document.getElementById('branchSelect').value;
+            const selectedClass = document.getElementById('classSelect').value;
+            const phone = document.getElementById('phone').value;
+
+            const adminPhone = "089679761774";
+            const text = `Halo Admin Sanggar Bening Irsani,%0ANama Saya: ${encodeURIComponent(name)}%0AUsia: ${encodeURIComponent(age)}%0APilihan Cabang: ${encodeURIComponent(branch)}%0AIngin mendaftar untuk: ${encodeURIComponent(selectedClass)}%0ANomor WA: ${encodeURIComponent(phone)}`;
+
+            window.open(`https://wa.me/${adminPhone}?text=${text}`, '_blank');
+        }
+    </script>
+</body>
+
+</html>
