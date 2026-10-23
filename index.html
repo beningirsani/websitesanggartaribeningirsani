@@ -1430,19 +1430,28 @@ html_content = """
         }
 
         // WhatsApp Form Redirection
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            const name = document.getElementById('fullName').value;
-            const age = document.getElementById('age').value;
-            const branch = document.getElementById('branchSelect').value;
-            const selectedClass = document.getElementById('classSelect').value;
-            const phone = document.getElementById('phone').value;
+function handleFormSubmit(event) {
+    event.preventDefault();
+    const name = document.getElementById('fullName').value;
+    const age = document.getElementById('age').value;
+    const branch = document.getElementById('branchSelect').value;
+    const selectedClass = document.getElementById('classSelect').value;
+    
+    // Ambil nomor telepon pendaftar dan bersihkan formatnya (jaga-jaga jika diperlukan)
+    let phone = document.getElementById('phone').value;
+    phone = phone.replace(/\D/g, '');
+    if (phone.startsWith('0')) {
+        phone = '62' + phone.slice(1);
+    }
 
-            const adminPhone = "089679761774";
-            const text = `Halo Admin Sanggar Bening Irsani,%0ANama Saya: ${encodeURIComponent(name)}%0AUsia: ${encodeURIComponent(age)}%0APilihan Cabang: ${encodeURIComponent(branch)}%0AIngin mendaftar untuk: ${encodeURIComponent(selectedClass)}%0ANomor WA: ${encodeURIComponent(phone)}`;
+    const adminPhone = "6289679761774"; // Nomor admin tujuan
 
-            window.open(`https://wa.me/${adminPhone}?text=${text}`, '_blank');
-        }
+    // Format isi pesan WhatsApp dengan data dari formulir
+    const text = `Halo Admin Sanggar Bening Irsani,%0ASaya ingin mendaftar dengan detail berikut:%0A- Nama: ${encodeURIComponent(name)}%0A- Umur: ${encodeURIComponent(age)}%0A- Cabang: ${encodeURIComponent(branch)}%0A- Kelas: ${encodeURIComponent(selectedClass)}%0A- No. HP: ${phone}`;
+
+    // Membuka link WhatsApp
+    window.open(`https://wa.me/${adminPhone}?text=${text}`, '_blank');
+}
     </script>
 </body>
 
